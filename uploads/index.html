@@ -1,0 +1,1896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alabama IQ — Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Reset & Base ─────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:            #F5F0E8;
+      --bg-dot:        rgba(12,18,25,0.07);
+      --bg-dark:       #080D14;
+      --bg-card:       rgba(252,248,241,0.75);
+      --teal-deep:     #0D7070;
+      --teal:          #1A9090;
+      --teal-hover:    #158080;
+      --amber:         #F5A623;
+      --ink:           #0C1219;
+      --ink-55:        rgba(12,18,25,0.55);
+      --ink-45:        rgba(12,18,25,0.45);
+      --ink-35:        rgba(12,18,25,0.35);
+      --ink-30:        rgba(12,18,25,0.30);
+      --ink-12:        rgba(12,18,25,0.12);
+      --ink-08:        rgba(12,18,25,0.08);
+      --ink-06:        rgba(12,18,25,0.06);
+      --error:         rgba(180,40,20,0.85);
+      --font-serif:    'Fraunces', Georgia, serif;
+      --font-sans:     'DM Sans', system-ui, sans-serif;
+      --font-mono:     'DM Mono', 'Courier New', monospace;
+      --ease-spring:   cubic-bezier(0.16, 1, 0.3, 1);
+      --radius-md:     10px;
+      --radius-lg:     14px;
+      --radius-xl:     16px;
+      --radius-pill:   100px;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      background-image: radial-gradient(var(--bg-dot) 1px, transparent 1px);
+      background-size: 22px 22px;
+      color: var(--ink);
+      min-height: 100vh;
+    }
+
+    /* ─── Layout ───────────────────────────────────────────────────────────── */
+
+    .ds-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 48px 120px;
+    }
+
+    /* ─── Top bar ──────────────────────────────────────────────────────────── */
+
+    .ds-topbar {
+      height: 2px;
+      background: linear-gradient(90deg, var(--teal) 0%, rgba(26,144,144,0.15) 100%);
+    }
+
+    /* ─── Header ───────────────────────────────────────────────────────────── */
+
+    .ds-header {
+      padding: 64px 0 56px;
+      border-bottom: 1px solid var(--ink-08);
+      margin-bottom: 72px;
+    }
+
+    .ds-header-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      color: var(--ink-35);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .ds-header-logo {
+      display: flex;
+      align-items: baseline;
+      gap: 2px;
+      margin-bottom: 16px;
+    }
+
+    .ds-header-logo .al {
+      font-family: var(--font-serif);
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.03em;
+    }
+
+    .ds-header-logo .iq {
+      font-family: var(--font-serif);
+      font-size: 42px;
+      font-weight: 400;
+      color: var(--teal-deep);
+    }
+
+    .ds-header-title {
+      font-family: var(--font-serif);
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--ink-55);
+      letter-spacing: 0.01em;
+    }
+
+    .ds-header-meta {
+      margin-top: 24px;
+      display: flex;
+      gap: 32px;
+    }
+
+    .ds-header-meta span {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--ink-35);
+      letter-spacing: 0.08em;
+    }
+
+    .ds-header-meta span b {
+      color: var(--teal-deep);
+      font-weight: 500;
+    }
+
+    /* ─── Section ──────────────────────────────────────────────────────────── */
+
+    .ds-section {
+      margin-bottom: 80px;
+    }
+
+    .ds-section-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      color: var(--teal-deep);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .ds-section-title {
+      font-family: var(--font-serif);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .ds-section-desc {
+      font-size: 14px;
+      color: var(--ink-55);
+      line-height: 1.6;
+      margin-bottom: 36px;
+      max-width: 56ch;
+    }
+
+    .ds-divider {
+      height: 1px;
+      background: linear-gradient(90deg, rgba(13,112,112,0.2) 0%, transparent 70%);
+      margin-bottom: 36px;
+    }
+
+    /* ─── Color Grid ───────────────────────────────────────────────────────── */
+
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 12px;
+    }
+
+    .color-chip {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--ink-08);
+    }
+
+    .color-swatch {
+      height: 72px;
+    }
+
+    .color-info {
+      padding: 10px 12px;
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(8px);
+    }
+
+    .color-name {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--ink);
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    .color-hex {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--ink-45);
+    }
+
+    .color-use {
+      font-size: 11px;
+      color: var(--ink-35);
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+
+    /* ─── Typography ───────────────────────────────────────────────────────── */
+
+    .type-row {
+      display: flex;
+      align-items: baseline;
+      gap: 24px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--ink-08);
+    }
+
+    .type-row:last-child { border-bottom: none; }
+
+    .type-meta {
+      min-width: 200px;
+      flex-shrink: 0;
+    }
+
+    .type-meta-name {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--teal-deep);
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+
+    .type-meta-spec {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--ink-35);
+      line-height: 1.7;
+    }
+
+    .type-preview { flex: 1; }
+
+    /* ─── Spacing Scale ────────────────────────────────────────────────────── */
+
+    .spacing-rows { display: flex; flex-direction: column; gap: 8px; }
+
+    .spacing-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .spacing-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--ink-35);
+      min-width: 80px;
+    }
+
+    .spacing-bar-wrap {
+      flex: 1;
+      height: 24px;
+      display: flex;
+      align-items: center;
+    }
+
+    .spacing-bar {
+      height: 8px;
+      background: linear-gradient(90deg, var(--teal-deep), rgba(13,112,112,0.3));
+      border-radius: 4px;
+    }
+
+    .spacing-px {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--ink-45);
+      min-width: 40px;
+    }
+
+    .spacing-use {
+      font-size: 11px;
+      color: var(--ink-35);
+      min-width: 200px;
+    }
+
+    /* ─── Radius ───────────────────────────────────────────────────────────── */
+
+    .radius-grid {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      align-items: flex-end;
+    }
+
+    .radius-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .radius-box {
+      background: rgba(13,112,112,0.12);
+      border: 1.5px solid rgba(13,112,112,0.35);
+      width: 64px;
+      height: 64px;
+    }
+
+    .radius-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--ink-35);
+      text-align: center;
+    }
+
+    .radius-value {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--teal-deep);
+      font-weight: 500;
+    }
+
+    /* ─── Shadows ──────────────────────────────────────────────────────────── */
+
+    .shadow-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .shadow-item {
+      padding: 24px;
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(255,255,255,0.85);
+    }
+
+    .shadow-name {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--teal-deep);
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+
+    .shadow-desc {
+      font-size: 11px;
+      color: var(--ink-35);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .shadow-preview {
+      height: 40px;
+      background: rgba(255,255,255,0.9);
+      border-radius: var(--radius-md);
+    }
+
+    /* ─── Animation ────────────────────────────────────────────────────────── */
+
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes liveIndicatorPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(13,112,112,0.45), 0 0 8px rgba(13,112,112,0.5); }
+      60%       { box-shadow: 0 0 0 5px rgba(13,112,112,0), 0 0 12px rgba(13,112,112,0.35); }
+    }
+
+    .anim-demo {
+      padding: 32px;
+      background: rgba(255,255,255,0.4);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--ink-08);
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .anim-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .anim-box {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, rgba(13,112,112,0.2), rgba(13,112,112,0.08));
+      border: 1.5px solid rgba(13,112,112,0.3);
+      border-radius: var(--radius-lg);
+    }
+
+    .anim-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--ink-35);
+      text-align: center;
+      letter-spacing: 0.08em;
+    }
+
+    .anim-trigger {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--teal-deep);
+      background: none;
+      border: 1px solid rgba(13,112,112,0.3);
+      border-radius: var(--radius-pill);
+      padding: 6px 14px;
+      cursor: pointer;
+      letter-spacing: 0.08em;
+      transition: background 0.15s ease;
+    }
+
+    .anim-trigger:hover { background: rgba(13,112,112,0.08); }
+
+    .stagger-grid {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .stagger-chip {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(13,112,112,0.08);
+      color: var(--teal-deep);
+      border: 1px solid rgba(13,112,112,0.2);
+    }
+
+    /* ─── Component: Top Accent Bar ────────────────────────────────────────── */
+
+    .comp-accent-bar {
+      height: 2px;
+      background: linear-gradient(90deg, var(--teal) 0%, rgba(26,144,144,0.15) 100%);
+      border-radius: 1px;
+    }
+
+    /* ─── Component: Live Badge ────────────────────────────────────────────── */
+
+    .comp-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, rgba(13,112,112,0.13) 0%, rgba(13,112,112,0.07) 100%);
+      border: 1px solid rgba(13,112,112,0.28);
+      border-radius: var(--radius-pill);
+      padding: 6px 16px;
+      box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 2px 10px rgba(13,112,112,0.08);
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--teal-deep);
+      flex-shrink: 0;
+      animation: liveIndicatorPulse 2.8s ease-in-out infinite;
+    }
+
+    .badge-text {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: var(--teal-deep);
+      text-transform: uppercase;
+    }
+
+    /* ─── Component: Button ────────────────────────────────────────────────── */
+
+    .comp-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--teal);
+      border: none;
+      border-radius: var(--radius-md);
+      padding: 13px 24px;
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+      cursor: pointer;
+      letter-spacing: 0.01em;
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.2) inset,
+        0 4px 14px rgba(13,112,112,0.35),
+        0 1px 3px rgba(13,112,112,0.2);
+      transition: box-shadow 0.15s ease, background 0.15s ease, transform 0.1s ease;
+      text-decoration: none;
+    }
+
+    .comp-btn:hover {
+      background: var(--teal-hover);
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.2) inset,
+        0 6px 20px rgba(13,112,112,0.45),
+        0 1px 3px rgba(13,112,112,0.25);
+    }
+
+    .comp-btn:active {
+      transform: scale(0.98) translateY(1px);
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.15) inset,
+        0 2px 6px rgba(13,112,112,0.25);
+    }
+
+    .comp-btn:disabled {
+      background: rgba(26,144,144,0.55);
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+
+    .comp-btn.ghost {
+      background: none;
+      border: none;
+      box-shadow: none;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--ink-35);
+      letter-spacing: 0.08em;
+      padding: 0;
+    }
+
+    .comp-btn.ghost:hover {
+      background: none;
+      box-shadow: none;
+      color: var(--ink-55);
+    }
+
+    /* ─── Component: Input ─────────────────────────────────────────────────── */
+
+    .comp-input {
+      width: 100%;
+      background: rgba(255,255,255,0.6);
+      border: 1px solid var(--ink-12);
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      font-family: var(--font-sans);
+      font-size: 15px;
+      color: var(--ink);
+      outline: none;
+      box-shadow: 0 2px 6px rgba(12,18,25,0.06) inset;
+      transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .comp-input:focus {
+      border-color: rgba(13,112,112,0.5);
+      background: rgba(255,255,255,0.85);
+      box-shadow: 0 2px 6px rgba(12,18,25,0.06) inset, 0 0 0 3px rgba(13,112,112,0.08);
+    }
+
+    .comp-input.error {
+      border-color: rgba(180,40,20,0.4);
+    }
+
+    .input-error-msg {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      color: var(--error);
+      margin-top: 4px;
+    }
+
+    /* ─── Component: Option Chip ───────────────────────────────────────────── */
+
+    .comp-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--ink-12);
+      background: rgba(255,255,255,0.5);
+      cursor: pointer;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      color: var(--ink-45);
+      font-weight: 400;
+      transition: all 0.15s ease;
+      box-shadow: 0 1px 0 rgba(255,255,255,0.7) inset;
+      outline: none;
+    }
+
+    .comp-chip.selected {
+      border-color: rgba(13,112,112,0.45);
+      background: linear-gradient(135deg, rgba(13,112,112,0.13) 0%, rgba(13,112,112,0.07) 100%);
+      color: var(--teal-deep);
+      font-weight: 500;
+      box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 2px 8px rgba(13,112,112,0.1);
+    }
+
+    .chip-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--teal-deep);
+      flex-shrink: 0;
+      box-shadow: 0 0 6px rgba(13,112,112,0.5);
+    }
+
+    /* ─── Component: Form Card ─────────────────────────────────────────────── */
+
+    .comp-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: var(--radius-xl);
+      padding: 22px;
+      border: 1px solid rgba(255,255,255,0.85);
+      box-shadow:
+        0 1px 0 0 rgba(255,255,255,0.95) inset,
+        0 -1px 0 0 rgba(12,18,25,0.06) inset,
+        0 8px 32px rgba(12,18,25,0.10),
+        0 2px 8px rgba(12,18,25,0.06),
+        0 0 0 0.5px rgba(12,18,25,0.07);
+      max-width: 440px;
+    }
+
+    /* ─── Component: Signal Bullets ────────────────────────────────────────── */
+
+    .comp-signals { display: flex; flex-direction: column; gap: 12px; }
+
+    .signal-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .signal-num {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--teal-deep);
+      letter-spacing: 0.1em;
+      flex-shrink: 0;
+      margin-top: 3px;
+      line-height: 1.5;
+      user-select: none;
+    }
+
+    .signal-text {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      color: var(--ink-55);
+      line-height: 1.5;
+    }
+
+    /* ─── Component: Numbered Question Label ───────────────────────────────── */
+
+    .q-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .q-num {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--teal-deep);
+      letter-spacing: 0.1em;
+    }
+
+    .q-label {
+      font-family: var(--font-serif);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+
+    /* ─── Component: Teal Divider ──────────────────────────────────────────── */
+
+    .comp-divider {
+      height: 1px;
+      background: linear-gradient(90deg, rgba(13,112,112,0.35) 0%, transparent 80%);
+    }
+
+    /* ─── Component: Video Wrapper ─────────────────────────────────────────── */
+
+    .comp-video-mock {
+      background: var(--bg-dark);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(12,18,25,0.1);
+      box-shadow: 0 2px 8px rgba(12,18,25,0.06), 0 20px 56px rgba(12,18,25,0.12);
+      aspect-ratio: 16/9;
+      max-width: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .video-mock-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: rgba(238,242,242,0.35);
+      letter-spacing: 0.12em;
+    }
+
+    .video-mute-btn {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(8,13,20,0.7);
+      border: 1px solid rgba(238,242,242,0.15);
+      color: rgba(238,242,242,0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+      backdrop-filter: blur(4px);
+    }
+
+    /* ─── Component: Footer Logo ───────────────────────────────────────────── */
+
+    .comp-footer-logo {
+      display: flex;
+      align-items: baseline;
+      gap: 2px;
+    }
+
+    .footer-al {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.03em;
+    }
+
+    .footer-iq {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--teal-deep);
+    }
+
+    /* ─── Gravity Score ────────────────────────────────────────────────────── */
+
+    .gravity-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .gravity-score {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      border-radius: var(--radius-pill);
+      padding: 3px 10px;
+    }
+
+    .gravity-score.high {
+      background: rgba(245,166,35,0.15);
+      color: var(--amber);
+      border: 1px solid rgba(245,166,35,0.3);
+    }
+
+    .gravity-score.mid {
+      background: rgba(13,112,112,0.1);
+      color: var(--teal-deep);
+      border: 1px solid rgba(13,112,112,0.25);
+    }
+
+    .gravity-score.low {
+      background: rgba(12,18,25,0.06);
+      color: var(--ink-35);
+      border: 1px solid var(--ink-08);
+    }
+
+    /* ─── Component Showcase Wrapper ───────────────────────────────────────── */
+
+    .comp-demo {
+      padding: 32px;
+      background: rgba(255,255,255,0.35);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--ink-08);
+      margin-bottom: 12px;
+    }
+
+    .comp-demo.dark {
+      background: var(--bg-dark);
+      border-color: rgba(238,242,242,0.08);
+    }
+
+    .comp-spec {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--ink-35);
+      line-height: 1.8;
+      padding: 12px 16px;
+      background: rgba(255,255,255,0.5);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--ink-08);
+      margin-top: 12px;
+    }
+
+    .comp-spec b { color: var(--teal-deep); }
+
+    .comp-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      color: var(--ink-35);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    /* ─── Locked Decision Cards ────────────────────────────────────────────── */
+
+    .locked-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+    }
+
+    .locked-card {
+      padding: 18px 20px;
+      background: rgba(255,255,255,0.5);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--ink-08);
+    }
+
+    .locked-rule {
+      font-family: var(--font-serif);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+
+    .locked-why {
+      font-size: 12px;
+      color: var(--ink-45);
+      line-height: 1.55;
+    }
+
+    .locked-tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      color: var(--teal-deep);
+      background: rgba(13,112,112,0.08);
+      border-radius: var(--radius-pill);
+      padding: 2px 8px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    /* ─── Anti-reference Cards ─────────────────────────────────────────────── */
+
+    .anti-grid {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .anti-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      background: rgba(180,40,20,0.07);
+      color: rgba(180,40,20,0.7);
+      border: 1px solid rgba(180,40,20,0.15);
+      letter-spacing: 0.05em;
+    }
+
+    .anti-tag::before { content: "✕  "; }
+
+    .ref-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      background: rgba(13,112,112,0.08);
+      color: var(--teal-deep);
+      border: 1px solid rgba(13,112,112,0.2);
+      letter-spacing: 0.05em;
+    }
+
+    .ref-tag::before { content: "✓  "; }
+
+    /* ─── TOC ──────────────────────────────────────────────────────────────── */
+
+    .toc {
+      position: fixed;
+      top: 48px;
+      right: 32px;
+      width: 160px;
+      padding: 16px;
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(255,255,255,0.85);
+      box-shadow: 0 4px 20px rgba(12,18,25,0.08);
+      display: none;
+    }
+
+    @media (min-width: 1360px) { .toc { display: block; } }
+
+    .toc-title {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      color: var(--ink-35);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .toc a {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--ink-45);
+      text-decoration: none;
+      padding: 3px 0;
+      letter-spacing: 0.04em;
+      transition: color 0.1s ease;
+    }
+
+    .toc a:hover { color: var(--teal-deep); }
+
+    /* ─── Misc helpers ─────────────────────────────────────────────────────── */
+
+    .flex-gap-sm { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .flex-gap-md { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+    .flex-gap-lg { display: flex; gap: 24px; flex-wrap: wrap; align-items: flex-start; }
+
+    .mt-sm { margin-top: 12px; }
+    .mt-md { margin-top: 20px; }
+    .mt-lg { margin-top: 32px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .badge-dot { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Top accent bar -->
+<div class="ds-topbar"></div>
+
+<!-- TOC -->
+<nav class="toc">
+  <div class="toc-title">Contents</div>
+  <a href="#colors">Colors</a>
+  <a href="#typography">Typography</a>
+  <a href="#spacing">Spacing</a>
+  <a href="#radius">Border Radius</a>
+  <a href="#shadows">Shadows</a>
+  <a href="#animation">Animation</a>
+  <a href="#components">Components</a>
+  <a href="#gravity">Gravity Scores</a>
+  <a href="#locked">Locked Decisions</a>
+  <a href="#references">References</a>
+</nav>
+
+<div class="ds-wrap">
+
+  <!-- ─── Header ─────────────────────────────────────────────────────────── -->
+  <header class="ds-header">
+    <p class="ds-header-eyebrow">Design System · v1.0 · 2026</p>
+    <div class="ds-header-logo">
+      <span class="al">AL</span><span class="iq">IQ</span>
+    </div>
+    <p class="ds-header-title">Editorial Intelligence Minimal — Tokens, Components & Principles</p>
+    <div class="ds-header-meta">
+      <span>Stack <b>React 19 + Vite + TS</b></span>
+      <span>Styling <b>Inline-first + Tailwind layout</b></span>
+      <span>Fonts <b>Fraunces · DM Sans · DM Mono</b></span>
+    </div>
+  </header>
+
+  <!-- ─── Brand Voice ─────────────────────────────────────────────────────── -->
+  <section class="ds-section" id="brand">
+    <p class="ds-section-label">01 — Brand</p>
+    <h2 class="ds-section-title">Voice & Aesthetic</h2>
+    <div class="ds-divider"></div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
+      <div class="locked-card">
+        <div class="locked-tag">Style</div>
+        <div class="locked-rule">Editorial Intelligence Minimal</div>
+        <div class="locked-why">Reads like a premium publication. Not a SaaS app. Not a news aggregator. References: Axios, Morning Brew.</div>
+      </div>
+      <div class="locked-card">
+        <div class="locked-tag">Personality</div>
+        <div class="locked-rule">Precise · Alive · Confident</div>
+        <div class="locked-why">The product is always watching, always thinking. Every UI decision should reinforce that it's living software, not a scheduled report.</div>
+      </div>
+      <div class="locked-card">
+        <div class="locked-tag">Core Feeling</div>
+        <div class="locked-rule">The Analyst Who Never Sleeps</div>
+        <div class="locked-why">Delivers only what matters, before your first meeting. Signals should feel like they're surfacing in real-time — not delivered.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Colors ──────────────────────────────────────────────────────────── -->
+  <section class="ds-section" id="colors">
+    <p class="ds-section-label">02 — Colors</p>
+    <h2 class="ds-section-title">Color Tokens</h2>
+    <p class="ds-section-desc">All colors have a semantic role. Never use a color outside its role — the meaning is the message.</p>
+    <div class="ds-divider"></div>
+
+    <div class="color-grid">
+
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#F5F0E8;border-bottom:1px solid rgba(12,18,25,0.08);"></div>
+        <div class="color-info">
+          <div class="color-name">--color-bg</div>
+          <div class="color-hex">#F5F0E8</div>
+          <div class="color-use">Primary page background. Warm cream. Never pure white.</div>
+        </div>
+      </div>
+
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#080D14;"></div>
+        <div class="color-info">
+          <div class="color-name">--color-bg-dark</div>
+          <div class="color-hex">#080D14</div>
+          <div class="color-use">Video background only. Screen-within-screen contrast.</div>
+        </div>
+      </div>
+
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#0D7070;"></div>
+        <div class="color-info">
+          <div class="color-name">--color-teal-deep</div>
+          <div class="color-hex">#0D7070</div>
+          <div class="color-use">Dots, labels, numbered markers, chip selected text, badge text.</div>
+        </div>
+      </div>
+
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#1A9090;"></div>
+        <div class="color-info">
+          <div class="color-name">--color-teal</div>
+          <div class="color-hex">#1A9090</div>
+          <div class="color-use">Buttons, top accent bar, links. Primary interactive color.</div>
+        </div>
+      </div>
+
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#158080;"></div>
+        <div class="color-info">
+          <div class="color-name">--color-teal-hover</div>
+          <div class="color-hex">#158080</div>
+          <div class="color-use">Button hover state only.</div>
+        </div>
+      </div>
+
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#F5A623;"></div>
+        <div class="color-info">
+          <div class="color-name">--color-amber</div>
+          <div class="color-hex">#F5A623</div>
+          <div class="color-use">Gravity scores (G 7+), high-signal indicators. Sparingly — it means urgency.</div>
+        </div>
+      </div>
+
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#0C1219;"></div>
+        <div class="color-info">
+          <div class="color-name">--color-ink</div>
+          <div class="color-hex">#0C1219</div>
+          <div class="color-use">Full-strength text: headlines, logo AL, inputs.</div>
+        </div>
+      </div>
+
+      <div class="color-chip">
+        <div class="color-swatch" style="background:rgba(12,18,25,0.55);"></div>
+        <div class="color-info">
+          <div class="color-name">--color-ink-55</div>
+          <div class="color-hex">rgba(12,18,25,0.55)</div>
+          <div class="color-use">Body copy, subtitles, signal bullets.</div>
+        </div>
+      </div>
+
+      <div class="color-chip">
+        <div class="color-swatch" style="background:rgba(12,18,25,0.35);border-bottom:1px solid rgba(12,18,25,0.06);"></div>
+        <div class="color-info">
+          <div class="color-name">--color-ink-35</div>
+          <div class="color-hex">rgba(12,18,25,0.35)</div>
+          <div class="color-use">Eyebrow labels, video eyebrow, questionnaire header.</div>
+        </div>
+      </div>
+
+      <div class="color-chip">
+        <div class="color-swatch" style="background:rgba(12,18,25,0.30);border-bottom:1px solid rgba(12,18,25,0.06);"></div>
+        <div class="color-info">
+          <div class="color-name">--color-ink-30</div>
+          <div class="color-hex">rgba(12,18,25,0.30)</div>
+          <div class="color-use">Footer copy, "No spam. Just signal.", Skip button.</div>
+        </div>
+      </div>
+
+      <div class="color-chip">
+        <div class="color-swatch" style="background:rgba(180,40,20,0.85);"></div>
+        <div class="color-info">
+          <div class="color-name">--color-error</div>
+          <div class="color-hex">rgba(180,40,20,0.85)</div>
+          <div class="color-use">Error messages only. Never decorative.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Dot grid pattern note -->
+    <div style="margin-top:24px;padding:16px 20px;background:rgba(255,255,255,0.5);border-radius:var(--radius-xl);border:1px solid var(--ink-08);">
+      <div class="comp-label" style="margin-bottom:8px;">Dot Grid Pattern</div>
+      <code class="comp-spec" style="display:block;">
+        background-image: radial-gradient(<b>rgba(12,18,25,0.07)</b> 1px, transparent 1px);<br>
+        background-size: <b>22px 22px</b>;
+      </code>
+    </div>
+  </section>
+
+  <!-- ─── Typography ──────────────────────────────────────────────────────── -->
+  <section class="ds-section" id="typography">
+    <p class="ds-section-label">03 — Typography</p>
+    <h2 class="ds-section-title">Type System</h2>
+    <p class="ds-section-desc">Three-font system with strict role assignments. Each font family has a job — do not cross-assign.</p>
+    <div class="ds-divider"></div>
+
+    <!-- Font families -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:40px;">
+      <div class="locked-card">
+        <div class="locked-tag">Fraunces · Serif</div>
+        <div style="font-family:'Fraunces',serif;font-size:32px;font-weight:700;color:var(--ink);margin:12px 0 4px;letter-spacing:-0.02em;">Headlines</div>
+        <div class="locked-why">Headlines, editorial weight, logo, questionnaire question labels, video scene titles. The voice of authority.</div>
+      </div>
+      <div class="locked-card">
+        <div class="locked-tag">DM Sans · Sans-serif</div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:20px;font-weight:400;color:var(--ink);margin:12px 0 4px;">Body Copy</div>
+        <div class="locked-why">UI body copy, form elements, buttons, signal text, subtitle, chip labels. The readable layer.</div>
+      </div>
+      <div class="locked-card">
+        <div class="locked-tag">DM Mono · Monospace</div>
+        <div style="font-family:'DM Mono',monospace;font-size:14px;color:var(--teal-deep);margin:12px 0 4px;letter-spacing:0.08em;">01 / METADATA</div>
+        <div class="locked-why">Metadata labels, numbered tags (01/02/03), badges, micro-copy, eyebrows, footer. The precision layer.</div>
+      </div>
+    </div>
+
+    <!-- Type scale -->
+    <div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-meta-name">HERO / H1</div>
+          <div class="type-meta-spec">
+            Fraunces · 700<br>
+            clamp(30px, 3.4vw, 48px)<br>
+            leading: 1.15<br>
+            tracking: -1px (~-0.02em)
+          </div>
+        </div>
+        <div class="type-preview">
+          <span style="font-family:'Fraunces',serif;font-size:clamp(24px,3vw,42px);font-weight:700;color:var(--ink);letter-spacing:-0.02em;line-height:1.15;">Alabama intelligence,<br>delivered before your<br>first meeting.</span>
+        </div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-meta-name">LOGO MARK</div>
+          <div class="type-meta-spec">
+            Fraunces<br>
+            18px<br>
+            AL: weight 700<br>
+            IQ: weight 400
+          </div>
+        </div>
+        <div class="type-preview">
+          <div class="comp-footer-logo">
+            <span class="footer-al">AL</span><span class="footer-iq">IQ</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-meta-name">BODY LARGE</div>
+          <div class="type-meta-spec">
+            DM Sans · 400<br>
+            16px<br>
+            leading: 1.65<br>
+            color: ink-55
+          </div>
+        </div>
+        <div class="type-preview">
+          <span style="font-family:'DM Sans',sans-serif;font-size:16px;color:var(--ink-55);line-height:1.65;">Local signals ranked by impact. Huntsville first.<br>Your city next.</span>
+        </div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-meta-name">BODY / UI</div>
+          <div class="type-meta-spec">
+            DM Sans · 400<br>
+            14–15px<br>
+            leading: 1.5<br>
+            color: ink-55
+          </div>
+        </div>
+        <div class="type-preview">
+          <span style="font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink-55);line-height:1.5;">Redstone Arsenal contract awards, ranked by local impact.</span>
+        </div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-meta-name">QUESTION LABEL</div>
+          <div class="type-meta-spec">
+            Fraunces · 600<br>
+            13px<br>
+            leading: 1.4<br>
+            color: ink
+          </div>
+        </div>
+        <div class="type-preview">
+          <div class="q-row">
+            <span class="q-num">01</span>
+            <span class="q-label">Which signals would you act on fastest?</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-meta-name">BADGE / LABEL</div>
+          <div class="type-meta-spec">
+            DM Mono · 400<br>
+            10px<br>
+            tracking: 0.15em<br>
+            uppercase · teal-deep
+          </div>
+        </div>
+        <div class="type-preview">
+          <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--teal-deep);text-transform:uppercase;">Early Access · Launching in Alabama</span>
+        </div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-meta-name">EYEBROW</div>
+          <div class="type-meta-spec">
+            DM Mono · 400<br>
+            9px<br>
+            tracking: 0.18em<br>
+            uppercase · ink-35
+          </div>
+        </div>
+        <div class="type-preview">
+          <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.18em;color:var(--ink-35);text-transform:uppercase;">One quick thing — help us build the right product</span>
+        </div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-meta-name">FOOTER / MICRO</div>
+          <div class="type-meta-spec">
+            DM Mono · 400<br>
+            11px<br>
+            tracking: 0.08em<br>
+            color: ink-30
+          </div>
+        </div>
+        <div class="type-preview">
+          <span style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.08em;color:var(--ink-30);">No spam. Just signal. &nbsp;&nbsp;·&nbsp;&nbsp; © 2026 Alabama IQ · alabamaiq.com</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── Spacing ──────────────────────────────────────────────────────────── -->
+  <section class="ds-section" id="spacing">
+    <p class="ds-section-label">04 — Spacing</p>
+    <h2 class="ds-section-title">Spacing Scale</h2>
+    <p class="ds-section-desc">Semantic spacing tokens map to real usage. When building, reach for semantic names first.</p>
+    <div class="ds-divider"></div>
+
+    <div class="spacing-rows">
+      <div class="spacing-row">
+        <span class="spacing-label">--space-1</span>
+        <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:4px;"></div></div>
+        <span class="spacing-px">4px</span>
+        <span class="spacing-use">—</span>
+      </div>
+      <div class="spacing-row">
+        <span class="spacing-label">--space-2</span>
+        <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:6px;"></div></div>
+        <span class="spacing-px">6px</span>
+        <span class="spacing-use">Chip gap · badge gap items</span>
+      </div>
+      <div class="spacing-row">
+        <span class="spacing-label">--space-3</span>
+        <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:8px;"></div></div>
+        <span class="spacing-px">8px</span>
+        <span class="spacing-use">Badge padding x start · form gaps</span>
+      </div>
+      <div class="spacing-row">
+        <span class="spacing-label">--space-5</span>
+        <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:12px;"></div></div>
+        <span class="spacing-px">12px</span>
+        <span class="spacing-use">Signal row gap</span>
+      </div>
+      <div class="spacing-row">
+        <span class="spacing-label">--space-7</span>
+        <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:16px;"></div></div>
+        <span class="spacing-px">16px</span>
+        <span class="spacing-use">Input padding x · question margin-bottom</span>
+      </div>
+      <div class="spacing-row">
+        <span class="spacing-label">--space-9</span>
+        <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:20px;"></div></div>
+        <span class="spacing-px">20px</span>
+        <span class="spacing-use">H1 margin-bottom</span>
+      </div>
+      <div class="spacing-row">
+        <span class="spacing-label">--space-10</span>
+        <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:22px;"></div></div>
+        <span class="spacing-px">22px</span>
+        <span class="spacing-use">Form card padding</span>
+      </div>
+      <div class="spacing-row">
+        <span class="spacing-label">--space-11</span>
+        <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:24px;"></div></div>
+        <span class="spacing-px">24px</span>
+        <span class="spacing-use">Divider margin-bottom</span>
+      </div>
+      <div class="spacing-row">
+        <span class="spacing-label">--space-12</span>
+        <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:28px;"></div></div>
+        <span class="spacing-px">28px</span>
+        <span class="spacing-use">Badge margin-bottom · subtitle margin-bottom</span>
+      </div>
+      <div class="spacing-row">
+        <span class="spacing-label">--space-13</span>
+        <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:32px;"></div></div>
+        <span class="spacing-px">32px</span>
+        <span class="spacing-use">Signals group margin-bottom</span>
+      </div>
+      <div class="spacing-row">
+        <span class="spacing-label">--space-15</span>
+        <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:48px;"></div></div>
+        <span class="spacing-px">48px</span>
+        <span class="spacing-use">Page padding x (desktop)</span>
+      </div>
+      <div class="spacing-row">
+        <span class="spacing-label">--space-18</span>
+        <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:80px;"></div></div>
+        <span class="spacing-px">80px</span>
+        <span class="spacing-use">Page padding y (desktop)</span>
+      </div>
+    </div>
+
+    <!-- Layout grid -->
+    <div class="mt-lg" style="padding:20px;background:rgba(255,255,255,0.4);border-radius:var(--radius-xl);border:1px solid var(--ink-08);">
+      <div class="comp-label">Page Layout Spec</div>
+      <div class="comp-spec">
+        Max-width: <b>1280px</b> · margin: 0 auto<br>
+        Grid: <b>1fr 1.4fr</b> (copy / video) → collapses to single column at 768px<br>
+        Mobile padding: <b>20px x</b> / <b>40px y</b><br>
+        Tablet padding: <b>32px x</b> / <b>60px y</b> (≤1024px)<br>
+        Desktop padding: <b>48px x</b> / <b>80px y</b><br>
+        Form max-width: <b>440px</b> · Video max-width: <b>640px</b>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Border Radius ────────────────────────────────────────────────────── -->
+  <section class="ds-section" id="radius">
+    <p class="ds-section-label">05 — Radius</p>
+    <h2 class="ds-section-title">Border Radius</h2>
+    <div class="ds-divider"></div>
+
+    <div class="radius-grid">
+      <div class="radius-item">
+        <div class="radius-box" style="border-radius:6px;"></div>
+        <div class="radius-value">6px</div>
+        <div class="radius-label">--radius-sm<br>Small elements</div>
+      </div>
+      <div class="radius-item">
+        <div class="radius-box" style="border-radius:10px;"></div>
+        <div class="radius-value">10px</div>
+        <div class="radius-label">--radius-md<br>Buttons · Inputs</div>
+      </div>
+      <div class="radius-item">
+        <div class="radius-box" style="border-radius:14px;"></div>
+        <div class="radius-value">14px</div>
+        <div class="radius-label">--radius-lg<br>Video wrapper</div>
+      </div>
+      <div class="radius-item">
+        <div class="radius-box" style="border-radius:16px;"></div>
+        <div class="radius-value">16px</div>
+        <div class="radius-label">--radius-xl<br>Form card</div>
+      </div>
+      <div class="radius-item">
+        <div class="radius-box" style="border-radius:100px;width:64px;height:32px;"></div>
+        <div class="radius-value">100px</div>
+        <div class="radius-label">--radius-pill<br>Badges · Chips</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Shadows ──────────────────────────────────────────────────────────── -->
+  <section class="ds-section" id="shadows">
+    <p class="ds-section-label">06 — Elevation</p>
+    <h2 class="ds-section-title">Shadows & Depth</h2>
+    <p class="ds-section-desc">Every surface layer has a unique shadow recipe. The light source is always from above. Teal shadows for interactive elements, neutral shadows for containers.</p>
+    <div class="ds-divider"></div>
+
+    <div class="shadow-grid">
+
+      <div class="shadow-item">
+        <div class="shadow-name">--shadow-video</div>
+        <div class="shadow-desc">Video wrapper. Subtle base + deep lift.</div>
+        <div class="shadow-preview" style="box-shadow:0 2px 8px rgba(12,18,25,0.06),0 20px 56px rgba(12,18,25,0.12);"></div>
+      </div>
+
+      <div class="shadow-item">
+        <div class="shadow-name">--shadow-card</div>
+        <div class="shadow-desc">Form card. White top-edge highlight + layered depth.</div>
+        <div class="shadow-preview" style="box-shadow:0 1px 0 0 rgba(255,255,255,0.95) inset,0 -1px 0 0 rgba(12,18,25,0.06) inset,0 8px 32px rgba(12,18,25,0.10),0 2px 8px rgba(12,18,25,0.06),0 0 0 0.5px rgba(12,18,25,0.07);"></div>
+      </div>
+
+      <div class="shadow-item">
+        <div class="shadow-name">--shadow-btn</div>
+        <div class="shadow-desc">Primary button default. Teal glow.</div>
+        <div class="shadow-preview" style="background:var(--teal);border-radius:var(--radius-md);box-shadow:0 1px 0 rgba(255,255,255,0.2) inset,0 4px 14px rgba(13,112,112,0.35),0 1px 3px rgba(13,112,112,0.2);"></div>
+      </div>
+
+      <div class="shadow-item">
+        <div class="shadow-name">--shadow-btn-hover</div>
+        <div class="shadow-desc">Button hover. Elevated teal glow.</div>
+        <div class="shadow-preview" style="background:var(--teal-hover);border-radius:var(--radius-md);box-shadow:0 1px 0 rgba(255,255,255,0.2) inset,0 6px 20px rgba(13,112,112,0.45),0 1px 3px rgba(13,112,112,0.25);"></div>
+      </div>
+
+      <div class="shadow-item">
+        <div class="shadow-name">--shadow-btn-active</div>
+        <div class="shadow-desc">Button press. Depressed, glow reduced.</div>
+        <div class="shadow-preview" style="background:#0D8888;border-radius:var(--radius-md);box-shadow:0 1px 0 rgba(255,255,255,0.15) inset,0 2px 6px rgba(13,112,112,0.25);"></div>
+      </div>
+
+      <div class="shadow-item">
+        <div class="shadow-name">--shadow-input / focus</div>
+        <div class="shadow-desc">Input default: inset depth. Focus: + teal ring.</div>
+        <div class="shadow-preview" style="box-shadow:0 2px 6px rgba(12,18,25,0.06) inset,0 0 0 3px rgba(13,112,112,0.08);"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── Animation ────────────────────────────────────────────────────────── -->
+  <section class="ds-section" id="animation">
+    <p class="ds-section-label">07 — Motion</p>
+    <h2 class="ds-section-title">Animation System</h2>
+    <p class="ds-section-desc">Motion reinforces the "living software" feeling. Every entrance should feel like something surfacing, not loading.</p>
+    <div class="ds-divider"></div>
+
+    <div class="anim-demo">
+
+      <div class="anim-item">
+        <div class="anim-box" id="fadeBox" style="opacity:0;"></div>
+        <div class="anim-label">fadeSlideUp<br>0.65s spring</div>
+        <button class="anim-trigger" onclick="replayAnim()">Replay ↺</button>
+      </div>
+
+      <div class="anim-item">
+        <div style="width:6px;height:6px;border-radius:50%;background:var(--teal-deep);animation:liveIndicatorPulse 2.8s ease-in-out infinite;"></div>
+        <div class="anim-label">liveIndicatorPulse<br>2.8s loop</div>
+      </div>
+
+      <div>
+        <div class="comp-label">Entrance Stagger Delays</div>
+        <div class="stagger-grid">
+          <span class="stagger-chip">0 → 0ms</span>
+          <span class="stagger-chip">1 → 80ms</span>
+          <span class="stagger-chip">2 → 120ms</span>
+          <span class="stagger-chip">3 → 160ms</span>
+          <span class="stagger-chip">4 → 220ms</span>
+          <span class="stagger-chip">5 → 300ms</span>
+          <span class="stagger-chip">6 → 400ms</span>
+        </div>
+        <div class="comp-spec" style="margin-top:12px;">
+          Easing: <b>cubic-bezier(0.16, 1, 0.3, 1)</b> — spring feel<br>
+          Duration: <b>0.65s</b> entrance / <b>0.15s</b> interactions<br>
+          From: <b>opacity:0, translateY(18px)</b>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── Components ───────────────────────────────────────────────────────── -->
+  <section class="ds-section" id="components">
+    <p class="ds-section-label">08 — Components</p>
+    <h2 class="ds-section-title">Component Library</h2>
+    <p class="ds-section-desc">All components use inline styles as primary. Tailwind is used for layout only. Each component has one job.</p>
+    <div class="ds-divider"></div>
+
+    <!-- Top Accent Bar -->
+    <div class="mt-md">
+      <div class="comp-label">Top Accent Bar</div>
+      <div class="comp-demo" style="padding:20px;">
+        <div class="comp-accent-bar"></div>
+      </div>
+      <div class="comp-spec">height: <b>2px</b> · gradient: <b>teal → rgba(26,144,144,0.15)</b> · always at page top</div>
+    </div>
+
+    <!-- Live Badge -->
+    <div class="mt-lg">
+      <div class="comp-label">Live Badge</div>
+      <div class="comp-demo">
+        <div class="comp-badge">
+          <div class="badge-dot"></div>
+          <span class="badge-text">Early Access · Launching in Alabama</span>
+        </div>
+      </div>
+      <div class="comp-spec">
+        font: <b>DM Mono 10px · 0.15em tracking · uppercase · teal-deep</b><br>
+        dot: <b>6px · teal-deep · liveIndicatorPulse 2.8s</b><br>
+        border: <b>rgba(13,112,112,0.28)</b> · bg: <b>teal gradient 13%→7%</b> · radius: <b>pill</b>
+      </div>
+    </div>
+
+    <!-- Primary Button -->
+    <div class="mt-lg">
+      <div class="comp-label">Primary Button — States</div>
+      <div class="comp-demo">
+        <div class="flex-gap-md">
+          <button class="comp-btn">Claim My Spot →</button>
+          <button class="comp-btn" style="background:var(--teal-hover);box-shadow:0 1px 0 rgba(255,255,255,0.2) inset,0 6px 20px rgba(13,112,112,0.45),0 1px 3px rgba(13,112,112,0.25);">Hover State</button>
+          <button class="comp-btn" style="transform:scale(0.98) translateY(1px);box-shadow:0 1px 0 rgba(255,255,255,0.15) inset,0 2px 6px rgba(13,112,112,0.25);">Active</button>
+          <button class="comp-btn" disabled>Loading…</button>
+          <button class="comp-btn ghost">Skip</button>
+        </div>
+      </div>
+      <div class="comp-spec">
+        bg: <b>#1A9090</b> · hover: <b>#158080</b> · radius: <b>10px</b><br>
+        font: <b>DM Sans 15px weight 600 · 0.01em tracking</b><br>
+        press: <b>scale(0.98) translateY(1px)</b><br>
+        disabled: <b>rgba(26,144,144,0.55) · box-shadow: none</b><br>
+        ghost: <b>DM Mono 10px · ink-35 · no bg/border/shadow</b>
+      </div>
+    </div>
+
+    <!-- Input -->
+    <div class="mt-lg">
+      <div class="comp-label">Input Field — States</div>
+      <div class="comp-demo">
+        <div style="display:flex;flex-direction:column;gap:12px;max-width:380px;">
+          <input class="comp-input" type="email" placeholder="your@email.com" />
+          <input class="comp-input" type="email" placeholder="your@email.com" style="border-color:rgba(13,112,112,0.5);background:rgba(255,255,255,0.85);box-shadow:0 2px 6px rgba(12,18,25,0.06) inset,0 0 0 3px rgba(13,112,112,0.08);" />
+          <div>
+            <input class="comp-input error" type="email" value="notanemail" />
+            <p class="input-error-msg">Enter a valid email address.</p>
+          </div>
+        </div>
+      </div>
+      <div class="comp-spec">
+        default border: <b>rgba(12,18,25,0.12)</b> · bg: <b>rgba(255,255,255,0.6)</b><br>
+        focus border: <b>rgba(13,112,112,0.5)</b> · ring: <b>rgba(13,112,112,0.08) 3px</b><br>
+        error border: <b>rgba(180,40,20,0.4)</b> · msg: <b>DM Sans 12px · error color</b><br>
+        shadow (default): <b>inset 0 2px 6px rgba(12,18,25,0.06)</b>
+      </div>
+    </div>
+
+    <!-- Option Chip -->
+    <div class="mt-lg">
+      <div class="comp-label">Option Chip — Selected & Unselected</div>
+      <div class="comp-demo">
+        <div class="flex-gap-sm" id="chipDemo">
+          <button class="comp-chip" onclick="toggleChip(this)">Defense &amp; federal contracts</button>
+          <button class="comp-chip selected" onclick="toggleChip(this)"><span class="chip-dot"></span>EDPA &amp; economic dev moves</button>
+          <button class="comp-chip" onclick="toggleChip(this)">Commercial real estate</button>
+          <button class="comp-chip selected" onclick="toggleChip(this)"><span class="chip-dot"></span>Tech hiring &amp; expansion</button>
+          <button class="comp-chip" onclick="toggleChip(this)">City &amp; regulatory changes</button>
+        </div>
+      </div>
+      <div class="comp-spec">
+        unselected: border <b>ink-12</b> · bg <b>rgba(255,255,255,0.5)</b> · color <b>ink-45</b><br>
+        selected: border <b>rgba(13,112,112,0.45)</b> · bg <b>teal gradient 13%→7%</b> · color <b>teal-deep</b><br>
+        selected dot: <b>5px · teal-deep · glow shadow</b><br>
+        radius: <b>pill</b> · font: <b>DM Sans 13px</b>
+      </div>
+    </div>
+
+    <!-- Form Card -->
+    <div class="mt-lg">
+      <div class="comp-label">Form Card (Frosted Glass)</div>
+      <div class="comp-demo">
+        <div class="comp-card">
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <input class="comp-input" type="email" placeholder="your@email.com" />
+            <button class="comp-btn">Claim My Spot →</button>
+          </div>
+          <p style="font-family:'DM Mono',monospace;font-size:11px;color:var(--ink-30);letter-spacing:0.08em;margin-top:12px;">No spam. Just signal.</p>
+        </div>
+      </div>
+      <div class="comp-spec">
+        bg: <b>rgba(252,248,241,0.75)</b> · blur: <b>16px</b><br>
+        border: <b>rgba(255,255,255,0.85)</b> · radius: <b>16px</b> · padding: <b>22px</b><br>
+        shadow: <b>white top-edge inset + dark bottom-edge inset + 3 outer layers + 0.5px ring</b><br>
+        note: frosted warm cream ≠ generic glassmorphism — intentional warm tint
+      </div>
+    </div>
+
+    <!-- Signal Bullets -->
+    <div class="mt-lg">
+      <div class="comp-label">Signal Bullets (01 / 02 / 03)</div>
+      <div class="comp-demo">
+        <div class="comp-signals">
+          <div class="signal-row">
+            <span class="signal-num">01</span>
+            <span class="signal-text">Redstone Arsenal contract awards, ranked by local impact</span>
+          </div>
+          <div class="signal-row">
+            <span class="signal-num">02</span>
+            <span class="signal-text">EDPA and city council moves before they hit the news desk</span>
+          </div>
+          <div class="signal-row">
+            <span class="signal-num">03</span>
+            <span class="signal-text">Tech expansion signals — who's hiring, who's leaving, who's building</span>
+          </div>
+        </div>
+      </div>
+      <div class="comp-spec">
+        number: <b>DM Mono 10px · teal-deep · 0.1em tracking</b> — NOT dots or dashes, always zero-padded<br>
+        text: <b>DM Sans 14px · ink-55 · leading 1.5</b><br>
+        gap between items: <b>12px</b> · gap between num and text: <b>14px</b>
+      </div>
+    </div>
+
+    <!-- Teal Divider -->
+    <div class="mt-lg">
+      <div class="comp-label">Teal Divider</div>
+      <div class="comp-demo">
+        <div class="comp-divider"></div>
+      </div>
+      <div class="comp-spec">
+        height: <b>1px</b> · gradient: <b>rgba(13,112,112,0.35) → transparent 80%</b><br>
+        usage: between subtitle and signal bullets · questionnaire sections
+      </div>
+    </div>
+
+    <!-- Video Wrapper -->
+    <div class="mt-lg">
+      <div class="comp-label">Video Wrapper</div>
+      <div class="comp-demo">
+        <div class="comp-video-mock">
+          <span class="video-mock-label">16:9 · Remotion Player</span>
+          <div class="video-mute-btn">🔇</div>
+        </div>
+      </div>
+      <div class="comp-spec">
+        bg: <b>#080D14</b> — LOCKED. Do not change. Screen-within-screen.<br>
+        border-radius: <b>14px</b> · border: <b>rgba(12,18,25,0.1)</b><br>
+        mute btn: <b>32px circle · rgba(8,13,20,0.7) · blur 4px · bottom-right: 12px</b>
+      </div>
+    </div>
+
+    <!-- Eyebrow Row -->
+    <div class="mt-lg">
+      <div class="comp-label">Section Eyebrow (Video label)</div>
+      <div class="comp-demo">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.18em;color:var(--ink-35);text-transform:uppercase;flex-shrink:0;">Live Preview</span>
+          <div style="flex:1;height:1px;background:var(--ink-08);"></div>
+        </div>
+      </div>
+      <div class="comp-spec">
+        label: <b>DM Mono 9px · 0.18em · uppercase · ink-35</b><br>
+        rule: <b>1px · ink-08</b> · flex-grows to fill remaining width
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="mt-lg">
+      <div class="comp-label">Footer</div>
+      <div class="comp-demo">
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <div class="comp-footer-logo">
+            <span class="footer-al">AL</span><span class="footer-iq">IQ</span>
+          </div>
+          <p style="font-family:'DM Mono',monospace;font-size:11px;color:var(--ink-30);letter-spacing:0.08em;">© 2026 Alabama IQ · alabamaiq.com</p>
+        </div>
+      </div>
+      <div class="comp-spec">
+        border-top: <b>rgba(238,242,242,0.06)</b><br>
+        AL: <b>Fraunces 18px weight 700 · ink · -0.03em tracking</b><br>
+        IQ: <b>Fraunces 18px weight 400 · teal-deep</b><br>
+        copyright: <b>DM Mono 11px · 0.08em · ink-30</b> — domain only, no tagline
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ─── Gravity Scores ───────────────────────────────────────────────────── -->
+  <section class="ds-section" id="gravity">
+    <p class="ds-section-label">09 — Gravity</p>
+    <h2 class="ds-section-title">Gravity Score Indicators</h2>
+    <p class="ds-section-desc">G-scores are the core product signal. Amber = high urgency. Teal = monitor. Neutral = background.</p>
+    <div class="ds-divider"></div>
+
+    <div class="comp-demo">
+      <div class="gravity-row">
+        <span class="gravity-score high">G 9</span>
+        <span style="font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink-55);">Redstone RSC Contract Modification · $840M — act now</span>
+      </div>
+      <div class="gravity-row" style="margin-top:12px;">
+        <span class="gravity-score high">G 7</span>
+        <span style="font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink-55);">Mazda Toyota MFG Expanding Huntsville Facility — monitor</span>
+      </div>
+      <div class="gravity-row" style="margin-top:12px;">
+        <span class="gravity-score mid">G 5</span>
+        <span style="font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink-55);">City of Huntsville Zoning Variance · Bridge St. — watch</span>
+      </div>
+      <div class="gravity-row" style="margin-top:12px;">
+        <span class="gravity-score low">G 2</span>
+        <span style="font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink-35);">Background noise — filtered from digest</span>
+      </div>
+    </div>
+    <div class="comp-spec">
+      G 7–10 (High): <b>amber · rgba(245,166,35,0.15) bg · 0.3 border</b><br>
+      G 4–6 (Mid): <b>teal-deep · rgba(13,112,112,0.1) bg · 0.25 border</b><br>
+      G 1–3 (Low): <b>ink-35 · rgba(12,18,25,0.06) bg · ink-08 border</b><br>
+      font: <b>DM Mono 11px weight 500</b> · radius: <b>pill</b>
+    </div>
+  </section>
+
+  <!-- ─── Locked Decisions ─────────────────────────────────────────────────── -->
+  <section class="ds-section" id="locked">
+    <p class="ds-section-label">10 — Locked</p>
+    <h2 class="ds-section-title">Locked Decisions</h2>
+    <p class="ds-section-desc">These are non-negotiable. Do not reverse without explicit discussion. Each has a reason.</p>
+    <div class="ds-divider"></div>
+
+    <div class="locked-grid">
+
+      <div class="locked-card">
+        <div class="locked-tag">Visual</div>
+        <div class="locked-rule">Light mode only — no dark mode</div>
+        <div class="locked-why">The dark video creates screen-within-screen contrast that only works on a light background. Dark mode destroys this effect.</div>
+      </div>
+
+      <div class="locked-card">
+        <div class="locked-tag">Visual</div>
+        <div class="locked-rule">Video background stays #080D14</div>
+        <div class="locked-why">Intentional contrast — "screen within a screen." Not a mistake. Do not lighten to match page theme.</div>
+      </div>
+
+      <div class="locked-card">
+        <div class="locked-tag">Visual</div>
+        <div class="locked-rule">Whitespace below video is intentional</div>
+        <div class="locked-why">Do not fill it. The breathing room anchors the video. Adding content destroys the editorial weight.</div>
+      </div>
+
+      <div class="locked-card">
+        <div class="locked-tag">Copy</div>
+        <div class="locked-rule">"No spam. Just signal." under form only</div>
+        <div class="locked-why">Its placement beneath the submit button is deliberate reassurance. It does not belong in the footer or anywhere else.</div>
+      </div>
+
+      <div class="locked-card">
+        <div class="locked-tag">Copy</div>
+        <div class="locked-rule">Footer shows domain only</div>
+        <div class="locked-why">alabamaiq.com only — no tagline, no mission statement in the footer.</div>
+      </div>
+
+      <div class="locked-card">
+        <div class="locked-tag">Component</div>
+        <div class="locked-rule">Signal labels: 01 / 02 / 03 DM Mono</div>
+        <div class="locked-why">Not dots, not dashes, not arrows. Zero-padded DM Mono numbers only — they're editorial marks, not bullet points.</div>
+      </div>
+
+      <div class="locked-card">
+        <div class="locked-tag">Component</div>
+        <div class="locked-rule">Questionnaire is always optional</div>
+        <div class="locked-why">Never make it blocking. Skip button always visible. 600ms delay gives confirmation moment before it appears.</div>
+      </div>
+
+      <div class="locked-card">
+        <div class="locked-tag">Component</div>
+        <div class="locked-rule">Form card glassmorphism is intentional</div>
+        <div class="locked-why">Frosted warm cream on cream is different from generic purple AI startup glass. The warm tint (252,248,241) is the key distinction.</div>
+      </div>
+
+      <div class="locked-card">
+        <div class="locked-tag">Styling</div>
+        <div class="locked-rule">Inline styles are primary</div>
+        <div class="locked-why">Tailwind is used for layout only. All design-critical styles use inline objects for precision and co-location with component logic.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── References ───────────────────────────────────────────────────────── -->
+  <section class="ds-section" id="references">
+    <p class="ds-section-label">11 — References</p>
+    <h2 class="ds-section-title">References & Anti-References</h2>
+    <p class="ds-section-desc">Know what to emulate and what to actively avoid. Both are equally important guardrails.</p>
+    <div class="ds-divider"></div>
+
+    <div class="comp-label" style="margin-bottom:12px;">Draw from these</div>
+    <div class="anti-grid" style="margin-bottom:32px;">
+      <span class="ref-tag">Axios</span>
+      <span class="ref-tag">Morning Brew</span>
+      <span class="ref-tag">The Peak (Canada)</span>
+      <span class="ref-tag">CoStar (data credibility)</span>
+      <span class="ref-tag">Bloomberg Terminal (signal density)</span>
+    </div>
+
+    <div class="comp-label" style="margin-bottom:12px;">Never look like these</div>
+    <div class="anti-grid">
+      <span class="anti-tag">Generic SaaS dashboard</span>
+      <span class="anti-tag">Purple gradients</span>
+      <span class="anti-tag">Glassmorphism (standard)</span>
+      <span class="anti-tag">AI startup aesthetic</span>
+      <span class="anti-tag">News aggregator RSS vibes</span>
+      <span class="anti-tag">Local government websites</span>
+      <span class="anti-tag">Patch.com aesthetic</span>
+      <span class="anti-tag">Dark mode landing pages</span>
+      <span class="anti-tag">Over-animated hero sections</span>
+      <span class="anti-tag">Card-heavy dashboards</span>
+    </div>
+  </section>
+
+  <!-- ─── Footer ───────────────────────────────────────────────────────────── -->
+  <footer style="border-top:1px solid var(--ink-08);padding:24px 0;display:flex;align-items:center;justify-content:space-between;">
+    <div class="comp-footer-logo">
+      <span class="footer-al">AL</span><span class="footer-iq">IQ</span>
+    </div>
+    <p style="font-family:'DM Mono',monospace;font-size:10px;color:var(--ink-30);letter-spacing:0.08em;">Design System v1.0 · 2026-03-31</p>
+  </footer>
+
+</div>
+
+<script>
+  // Fade-slide replay
+  function replayAnim() {
+    var box = document.getElementById('fadeBox');
+    box.style.animation = 'none';
+    box.style.opacity = '0';
+    box.offsetHeight; // reflow
+    box.style.animation = 'fadeSlideUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) both';
+  }
+  // Initial play
+  window.addEventListener('load', function() {
+    setTimeout(replayAnim, 300);
+  });
+
+  // Chip toggle demo
+  function toggleChip(el) {
+    var isSelected = el.classList.contains('selected');
+    if (isSelected) {
+      el.classList.remove('selected');
+      var dot = el.querySelector('.chip-dot');
+      if (dot) dot.remove();
+    } else {
+      el.classList.add('selected');
+      var dot = document.createElement('span');
+      dot.className = 'chip-dot';
+      el.insertBefore(dot, el.firstChild);
+    }
+  }
+</script>
+
+</body>
+</html>
