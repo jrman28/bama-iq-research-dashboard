@@ -4,6 +4,9 @@ A static research dashboard for the Alabama IQ product build. It turns four sour
 
 ## Live Project
 
+- GitHub: https://github.com/jrman28/bama-iq-research-dashboard
+- here.now: https://autumn-yoga-sqea.here.now/
+
 This project is designed to run as a static site. Open `index.html` directly or serve the folder with any static file server.
 
 ## What It Contains
